@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-local-kubernetes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golang-local-kubernetes
+  template:
+    metadata:
+      labels:
+        app: golang-local-kubernetes
+    spec:
+      containers:
+        - name: golang-local-kubernetes
+          image: golang-local-kubernetes:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
